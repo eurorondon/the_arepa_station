@@ -3,55 +3,57 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-// Configuración de animación para las secciones con tipado correcto para evitar errores de 'ease'
-const fadeIn = {
+// Configuración de animación con tipado 'any' para evitar errores de build en Vercel
+const fadeIn: any = {
   initial: { opacity: 0, y: 40 },
   whileInView: { opacity: 1, y: 0 },
   viewport: { once: true, margin: "-100px" },
-  transition: { duration: 0.8, ease: "easeOut" as const }, // 'as const' es la clave
+  transition: { duration: 0.8, ease: "easeOut" },
 };
 
 export default function LandingPage() {
   const redTAS = "bg-[#C21E3A]";
   const orangeTAS = "bg-[#E99623]";
   const textRedTAS = "text-[#C21E3A]";
+  const textOrangeTAS = "text-[#E99623]";
 
   return (
     <main className="min-h-screen font-sans text-white overflow-x-hidden bg-white">
-      {/* SECCIÓN 1: HERO */}
+      {/* SECCIÓN 1: HERO (Ajustado para que no choque en móviles) */}
       <section
-        className={`${redTAS} h-screen flex flex-col items-center justify-center text-center p-6 relative`}
+        className={`${redTAS} h-screen flex flex-col items-center justify-center text-center px-4 md:px-6 relative overflow-hidden`}
       >
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1 }}
+          className="w-full max-w-full"
         >
-          <h2 className="text-xl tracking-[0.4em] mb-4 font-light italic">
-            GUÍA CUSTOMER SERVICE
+          <h2 className="text-lg md:text-xl tracking-[0.4em] mb-4 font-light italic uppercase">
+            Guía Customer Service
           </h2>
-          <h1 className="text-[12rem] md:text-[18rem] font-black leading-none text-[#E99623] drop-shadow-2xl">
+          {/* Ajustado: text-[8rem] en móvil para que tenga padding lateral */}
+          <h1
+            className={`text-[10rem] md:text-[18rem] font-black leading-none ${textOrangeTAS} drop-shadow-2xl select-none break-words px-2`}
+          >
             TAS
           </h1>
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="mt-8 bg-white text-[#C21E3A] px-12 py-3 font-bold rounded-sm shadow-lg uppercase"
+            className="mt-8 bg-white text-[#C21E3A] px-12 py-3 font-bold rounded-sm shadow-lg uppercase tracking-tight"
           >
-            INICIAR
+            Iniciar
           </motion.button>
         </motion.div>
-        <p className="absolute bottom-10 right-10 text-xs italic opacity-80">
-          SERVICIO QUE DEJA HUELLA
+        <p className="absolute bottom-10 right-10 text-[10px] md:text-xs italic opacity-80 tracking-widest uppercase">
+          Servicio que deja huella
         </p>
       </section>
 
       {/* SECCIÓN 2: BIENVENIDA */}
       <motion.section
-        initial={fadeIn.initial}
-        whileInView={fadeIn.whileInView}
-        viewport={fadeIn.viewport}
-        transition={fadeIn.transition}
+        {...fadeIn}
         className={`${orangeTAS} py-24 px-10 md:px-24 grid md:grid-cols-2 gap-10`}
       >
         <div className="max-w-xl">
@@ -60,7 +62,7 @@ export default function LandingPage() {
           >
             Hola, ¿cómo puedo ayudarte?
           </p>
-          <h2 className="text-6xl md:text-8xl font-black leading-tight text-white uppercase">
+          <h2 className="text-5xl md:text-8xl font-black leading-tight text-white uppercase italic">
             Hi, how can I help you?
           </h2>
         </div>
@@ -76,43 +78,66 @@ export default function LandingPage() {
         </div>
       </motion.section>
 
-      {/* SECCIÓN 3: GALERÍA DE IMÁGENES */}
+      {/* SECCIÓN 3: GALERÍA DE IMÁGENES (Redondeada y Dinámica) */}
       <section
         className={`${redTAS} py-12 px-6 md:px-12 grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6`}
       >
-        {[
-          "https://images.unsplash.com/photo-1623341214825-9f4f963727da?q=80&w=500",
-          "https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=500",
-          "https://images.unsplash.com/photo-1619194617062-5a61b9c6a049?q=80&w=500",
-          "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=500",
-        ].map((src, i) => (
-          <motion.div
-            key={i}
-            initial={fadeIn.initial}
-            whileInView={fadeIn.whileInView}
-            viewport={fadeIn.viewport}
-            transition={{ ...fadeIn.transition, delay: i * 0.1 }}
-            className="aspect-square rounded-[2rem] overflow-hidden shadow-xl"
-          >
-            <img
-              src={src}
-              alt="Gallery"
-              className="object-cover w-full h-full hover:scale-110 transition-transform duration-500"
-            />
-          </motion.div>
-        ))}
+        {/* Imágenes superiores */}
+        <motion.div
+          {...fadeIn}
+          className="aspect-square rounded-[2rem] overflow-hidden shadow-xl"
+        >
+          <img
+            src="https://images.unsplash.com/photo-1623341214825-9f4f963727da?q=80&w=500"
+            alt="Arepas"
+            className="object-cover w-full h-full hover:scale-110 transition-transform duration-500"
+          />
+        </motion.div>
+        <motion.div
+          {...fadeIn}
+          transition={{ delay: 0.1 }}
+          className="aspect-square rounded-[2rem] overflow-hidden shadow-xl"
+        >
+          <img
+            src="https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=500"
+            alt="Food"
+            className="object-cover w-full h-full hover:scale-110 transition-transform duration-500"
+          />
+        </motion.div>
+        <motion.div
+          {...fadeIn}
+          transition={{ delay: 0.2 }}
+          className="aspect-square rounded-[2rem] overflow-hidden shadow-xl"
+        >
+          <img
+            src="https://images.unsplash.com/photo-1619194617062-5a61b9c6a049?q=80&w=500"
+            alt="Service"
+            className="object-cover w-full h-full hover:scale-110 transition-transform duration-500"
+          />
+        </motion.div>
+        <motion.div
+          {...fadeIn}
+          transition={{ delay: 0.3 }}
+          className="aspect-square rounded-[2rem] overflow-hidden shadow-xl"
+        >
+          <img
+            src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=500"
+            alt="Detail"
+            className="object-cover w-full h-full hover:scale-110 transition-transform duration-500"
+          />
+        </motion.div>
 
         {/* Logos/Gráficos inferiores */}
         <motion.div
           {...fadeIn}
-          transition={{ ...fadeIn.transition, delay: 0.4 }}
-          className={`${orangeTAS} aspect-square rounded-[2.5rem] flex items-center justify-center font-black text-8xl shadow-lg border border-white/10`}
+          transition={{ delay: 0.4 }}
+          className={`${orangeTAS} aspect-square rounded-[2.5rem] flex items-center justify-center font-black text-7xl md:text-8xl shadow-lg border border-white/10`}
         >
           S
         </motion.div>
         <motion.div
           {...fadeIn}
-          transition={{ ...fadeIn.transition, delay: 0.5 }}
+          transition={{ delay: 0.5 }}
           className="bg-white text-[#E99623] aspect-square rounded-[2.5rem] flex flex-col items-center justify-center p-4 shadow-lg"
         >
           <span className="text-[10px] md:text-xs font-bold border-b border-[#E99623] mb-1">
@@ -124,7 +149,7 @@ export default function LandingPage() {
         </motion.div>
         <motion.div
           {...fadeIn}
-          transition={{ ...fadeIn.transition, delay: 0.6 }}
+          transition={{ delay: 0.6 }}
           className="bg-white text-[#C21E3A] aspect-square rounded-[2.5rem] flex flex-col items-center justify-center p-4 shadow-lg"
         >
           <span className="text-[10px] md:text-xs font-bold border-b border-[#C21E3A] mb-1">
@@ -136,8 +161,8 @@ export default function LandingPage() {
         </motion.div>
         <motion.div
           {...fadeIn}
-          transition={{ ...fadeIn.transition, delay: 0.7 }}
-          className={`${orangeTAS} aspect-square rounded-[2.5rem] flex items-center justify-center font-black text-6xl shadow-lg uppercase`}
+          transition={{ delay: 0.7 }}
+          className={`${orangeTAS} aspect-square rounded-[2.5rem] flex items-center justify-center font-black text-5xl md:text-6xl shadow-lg uppercase`}
         >
           TAS
         </motion.div>
@@ -198,24 +223,28 @@ export default function LandingPage() {
             {...fadeIn}
             className={`${orangeTAS} p-12 rounded-[2.5rem] shadow-xl flex flex-col justify-center`}
           >
-            <h3 className="font-black text-4xl mb-4 uppercase">Contacto</h3>
-            <p className="text-lg font-bold opacity-90 uppercase">
+            <h3 className="font-black text-4xl mb-4 uppercase tracking-tighter italic">
+              Contacto
+            </h3>
+            <p className="text-sm md:text-lg font-bold opacity-90 uppercase tracking-widest">
               hola@thearepastation.com
             </p>
           </motion.div>
           <motion.div
             {...fadeIn}
-            transition={{ ...fadeIn.transition, delay: 0.2 }}
+            transition={{ delay: 0.2 }}
             className={`${orangeTAS} p-12 rounded-[2.5rem] shadow-xl flex flex-col justify-center`}
           >
-            <h3 className="font-black text-4xl mb-4 uppercase">Seguir</h3>
-            <p className="text-lg font-bold opacity-90 uppercase">
+            <h3 className="font-black text-4xl mb-4 uppercase tracking-tighter italic">
+              Seguir
+            </h3>
+            <p className="text-sm md:text-lg font-bold opacity-90 uppercase tracking-widest">
               @thearepastation
             </p>
           </motion.div>
         </div>
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-10">
-          <span className="text-[25rem] md:text-[45rem] font-black leading-none text-white select-none uppercase">
+          <span className="text-[20rem] md:text-[45rem] font-black leading-none text-white select-none uppercase">
             TAS
           </span>
         </div>
@@ -238,7 +267,7 @@ function StepOriginal({
       initial={{ opacity: 0, x: 20 }}
       whileInView={{ opacity: 1, x: 0 }}
       viewport={{ once: true }}
-      transition={{ delay, duration: 0.6, ease: "easeOut" as const }}
+      transition={{ delay, duration: 0.6 }}
       className="flex flex-col gap-2"
     >
       <h3 className="font-bold text-xl text-white uppercase tracking-tight leading-tight border-b-2 border-white/20 pb-1 mb-1">
