@@ -1,175 +1,185 @@
 import React from "react";
 
 export default function LandingPage() {
-  // Definimos los colores en variables para que sea más fácil de leer
   const redTAS = "bg-[#C21E3A]";
   const orangeTAS = "bg-[#E99623]";
   const textRedTAS = "text-[#C21E3A]";
-  const textOrangeTAS = "text-[#E99623]";
 
   return (
     <main className="min-h-screen font-sans text-white overflow-x-hidden">
-      {/* SECCIÓN 1: HERO */}
+      {/* SECCIÓN 1: HERO (Igual que la imagen) */}
       <section
         className={`${redTAS} h-screen flex flex-col items-center justify-center text-center p-6 relative`}
       >
-        <h2 className="text-xl tracking-[0.3em] mb-4 font-light">
+        <h2 className="text-xl tracking-[0.4em] mb-4 font-light">
           GUÍA COSTOMER SERVICE
         </h2>
-        <h1
-          className={`text-[10rem] md:text-[15rem] font-black leading-none ${textOrangeTAS}`}
-        >
+        <h1 className="text-[12rem] md:text-[18rem] font-black leading-none text-[#E99623]">
           TAS
         </h1>
-        <button className="mt-8 bg-white text-[#C21E3A] px-12 py-3 font-bold text-lg hover:scale-105 transition-transform">
+        <button className="mt-8 bg-white text-[#C21E3A] px-12 py-3 font-bold rounded-sm hover:bg-gray-100 transition shadow-lg">
           INICIAR
         </button>
-        <p className="absolute bottom-10 right-10 text-xs italic tracking-widest">
+        <p className="absolute bottom-10 right-10 text-xs italic opacity-80">
           SERVICIO QUE DEJA HUELLA
         </p>
       </section>
 
       {/* SECCIÓN 2: BIENVENIDA */}
       <section
-        className={`${orangeTAS} p-12 md:p-24 grid md:grid-cols-2 gap-10 items-center`}
+        className={`${orangeTAS} py-20 px-10 md:px-24 grid md:grid-cols-2 gap-10`}
       >
-        <div>
-          <p className={`${textRedTAS} font-black mb-2 text-lg`}>
-            HOLA, CÓMO PUEDO AYUDARTE
+        <div className="max-w-xl">
+          <p
+            className={`${textRedTAS} font-bold mb-4 uppercase tracking-wider text-lg`}
+          >
+            Hola, ¿cómo puedo ayudarte?
           </p>
-          <h2 className="text-5xl md:text-7xl font-black leading-tight text-white">
-            HI, HOW CAN I HELP YOU?
+          <h2 className="text-6xl md:text-8xl font-black leading-tight text-white uppercase">
+            Hi, how can I help you?
           </h2>
         </div>
-        <div className="flex flex-col justify-center gap-6 border-l-2 border-white/30 pl-8">
-          <p className="text-lg leading-relaxed text-white">
+        <div className="flex flex-col justify-center gap-8 max-w-lg">
+          <p className="text-lg md:text-xl leading-relaxed font-medium">
             "Sabemos que hablar inglés puede ser un desafío, especialmente en el
             servicio al cliente... Aquí encontrarás las herramientas que
             necesitas para comunicarte con confianza y facilidad."
           </p>
-          <button className="border-2 border-white w-fit px-8 py-3 font-bold hover:bg-white hover:text-[#E99623] transition-all">
-            MIRA LO QUE HE HECHO
+          <button className="border-2 border-white w-fit px-8 py-3 font-bold rounded-lg hover:bg-white hover:text-[#E99623] transition-all uppercase tracking-tighter">
+            Mira lo que he hecho
           </button>
         </div>
       </section>
 
-      {/* SECCIÓN 3: GALERÍA Y LOGOS */}
+      {/* SECCIÓN 3: GALERÍA DE IMÁGENES (Manteniendo los cuadros de la imagen) */}
       <section
-        className={`${redTAS} p-4 md:p-12 grid grid-cols-2 md:grid-cols-4 gap-4`}
+        className={`${redTAS} py-12 px-6 md:px-12 grid grid-cols-2 md:grid-cols-4 gap-4`}
       >
-        {/* Imagen 1 */}
-        <div className="aspect-square relative overflow-hidden group">
+        {/* Imágenes superiores */}
+        <div className="aspect-square rounded-[2rem] overflow-hidden shadow-xl">
           <img
-            src="https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=500&auto=format&fit=crop"
-            alt="Arepa 1"
-            className="object-cover w-full h-full group-hover:scale-110 transition-transform duration-500"
+            src="https://images.unsplash.com/photo-1623341214825-9f4f963727da?q=80&w=400&h=400&fit=crop"
+            alt="Arepas"
+            className="object-cover w-full h-full"
           />
         </div>
-        {/* Imagen 2 */}
-        <div className="aspect-square relative overflow-hidden group">
+        <div className="aspect-square rounded-[2rem] overflow-hidden shadow-xl">
           <img
-            src="https://images.unsplash.com/photo-1623341214825-9f4f963727da?q=80&w=500&auto=format&fit=crop"
-            alt="Arepa 2"
-            className="object-cover w-full h-full group-hover:scale-110 transition-transform duration-500"
+            src="https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=400&h=400&fit=crop"
+            alt="Food"
+            className="object-cover w-full h-full"
           />
         </div>
-        {/* Imagen 3 */}
-        <div className="aspect-square relative overflow-hidden group">
+        <div className="aspect-square rounded-[2rem] overflow-hidden shadow-xl">
           <img
-            src="https://images.unsplash.com/photo-1619194617062-5a61b9c6a049?q=80&w=500&auto=format&fit=crop"
+            src="https://images.unsplash.com/photo-1619194617062-5a61b9c6a049?q=80&w=400&h=400&fit=crop"
             alt="Service"
-            className="object-cover w-full h-full group-hover:scale-110 transition-transform duration-500"
+            className="object-cover w-full h-full"
           />
         </div>
-        {/* Imagen 4 */}
-        <div className="aspect-square relative overflow-hidden group">
+        <div className="aspect-square rounded-[2rem] overflow-hidden shadow-xl">
           <img
-            src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=500&auto=format&fit=crop"
-            alt="Arepa 4"
-            className="object-cover w-full h-full group-hover:scale-110 transition-transform duration-500"
+            src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=400&h=400&fit=crop"
+            alt="Detail"
+            className="object-cover w-full h-full"
           />
         </div>
 
-        {/* Logos Inferiores */}
+        {/* Logos/Gráficos inferiores (Fiel a la imagen) */}
         <div
-          className={`${orangeTAS} aspect-square flex items-center justify-center font-black text-7xl md:text-8xl`}
+          className={`${orangeTAS} aspect-square rounded-[2rem] flex items-center justify-center font-black text-7xl shadow-lg`}
         >
           S
         </div>
-        <div className="bg-white aspect-square flex flex-col items-center justify-center p-4">
-          <span
-            className={`${textOrangeTAS} text-[10px] md:text-xs font-bold border-b-2 border-[#E99623] mb-1`}
-          >
+        <div className="bg-white text-[#E99623] aspect-square rounded-[2rem] flex flex-col items-center justify-center p-4 shadow-lg border border-gray-100">
+          <span className="text-[10px] md:text-xs font-bold border-b border-[#E99623] mb-1">
             THE AREPA
           </span>
-          <span className={`${textOrangeTAS} text-xl md:text-3xl font-black`}>
+          <span className="text-lg md:text-2xl font-black text-center leading-none">
             STATION
           </span>
         </div>
-        <div className="bg-white aspect-square flex flex-col items-center justify-center p-4">
-          <span
-            className={`${textRedTAS} text-[10px] md:text-xs font-bold border-b-2 border-[#C21E3A] mb-1`}
-          >
+        <div className="bg-white text-[#C21E3A] aspect-square rounded-[2rem] flex flex-col items-center justify-center p-4 shadow-lg border border-gray-100">
+          <span className="text-[10px] md:text-xs font-bold border-b border-[#C21E3A] mb-1">
             THE AREPA
           </span>
-          <span className={`${textRedTAS} text-xl md:text-3xl font-black`}>
+          <span className="text-lg md:text-2xl font-black text-center leading-none">
             STATION
           </span>
         </div>
         <div
-          className={`${orangeTAS} aspect-square flex items-center justify-center font-black text-5xl md:text-6xl`}
+          className={`${orangeTAS} aspect-square rounded-[2rem] flex items-center justify-center font-black text-5xl shadow-lg uppercase`}
         >
           TAS
         </div>
       </section>
 
-      {/* SECCIÓN 4: PASOS / LO QUE HAGO */}
-      <section className={`${orangeTAS} p-12 md:p-24`}>
-        <div className="grid md:grid-cols-3 gap-12">
+      {/* SECCIÓN 4: LO QUE HAGO (Estructura EXACTA de la imagen) */}
+      <section
+        className={`${orangeTAS} py-20 px-10 md:px-24 grid md:grid-cols-3 gap-12`}
+      >
+        {/* Título a la izquierda */}
+        <div className="flex items-center">
           <h2
-            className={`text-6xl md:text-8xl font-black ${textRedTAS} uppercase leading-none`}
+            className={`text-6xl md:text-7xl font-black ${textRedTAS} uppercase leading-[0.85]`}
           >
             Lo que <br /> hago
           </h2>
-          <div className="md:col-span-2 grid md:grid-cols-2 gap-x-12 gap-y-16">
-            <Step
-              title="Greeting the customer"
-              desc="Mis cartas captan la atención con gráficas alineadas, trato con garra y elementos visuales actuales."
-            />
-            <Step
-              title="Responding to customers"
-              desc="¡Haz que vivan! Creo espectáculos visuales de colores e imágenes más grandes que la vida."
-            />
-            <Step
-              title="Offering the menu"
-              desc="Mis mensajes contienen los espacios en blanco necesarios visuales que hablan por sí solos."
-            />
-            <Step
-              title="Confirming the order"
-              desc="El medio es el mensaje. Gestionamos cada pedido con precisión y claridad visual."
-            />
-          </div>
+        </div>
+
+        {/* Dos columnas de texto a la derecha */}
+        <div className="md:col-span-2 grid md:grid-cols-2 gap-x-12 gap-y-12">
+          <StepOriginal
+            title="Greeting the customer"
+            desc="Mis cartas captan la atención con gráficas alineadas, trato con garra y elementos visuales actuales."
+          />
+          <StepOriginal
+            title="Responding to customers"
+            desc="¡Haz que vivan! Creo espectáculos visuales de colores e imágenes más grandes que la vida."
+          />
+          <StepOriginal
+            title="Offering the menu"
+            desc="Mis mensajes contienen los espacios en blanco necesarios visuales que hablan por sí solos."
+          />
+          <StepOriginal
+            title="Explaining the arepas"
+            desc="El medio es el mensaje. Gestionamos cada pedido con precisión y claridad visual."
+          />
+          <StepOriginal
+            title="Confirming the order"
+            desc="Mis cartas captan la atención con gráficas alineadas, trato con garra y elementos visuales actuales."
+          />
+          <StepOriginal
+            title="Saying goodbye properly"
+            desc="Mis carteles captan la atención con gráficos alineados, trato con garra y elementos visuales actuales."
+          />
         </div>
       </section>
 
-      {/* SECCIÓN 5: FOOTER */}
+      {/* SECCIÓN 5: FOOTER (Estructura de la imagen) */}
       <footer
-        className={`${redTAS} p-12 md:p-20 relative overflow-hidden min-h-[400px] flex items-center`}
+        className={`${redTAS} py-16 px-10 md:px-24 relative overflow-hidden`}
       >
-        <div className="relative z-10 grid md:grid-cols-2 gap-6 w-full max-w-4xl">
-          <div className={`${orangeTAS} p-8 flex flex-col gap-2`}>
-            <h3 className="font-black text-2xl">CONTACTO</h3>
-            <p className="text-sm font-medium uppercase">
-              email@thearepastation.com
+        <div className="grid md:grid-cols-2 gap-6 relative z-10">
+          <div
+            className={`${orangeTAS} p-10 rounded-2xl shadow-xl flex flex-col justify-center`}
+          >
+            <h3 className="font-black text-3xl mb-4 uppercase">Contacto</h3>
+            <p className="text-sm font-bold opacity-90">EMAIL@EMAIL.COM</p>
+            <p className="text-sm font-bold opacity-90">@INSTAGRAM</p>
+          </div>
+          <div
+            className={`${orangeTAS} p-10 rounded-2xl shadow-xl flex flex-col justify-center`}
+          >
+            <h3 className="font-black text-3xl mb-4 uppercase">Seguir</h3>
+            <p className="text-sm font-bold opacity-90 uppercase tracking-widest">
+              The Arepa Station en Instagram
             </p>
           </div>
-          <div className={`${orangeTAS} p-8 flex flex-col gap-2`}>
-            <h3 className="font-black text-2xl">SEGUIR</h3>
-            <p className="text-sm font-medium uppercase">@thearepastation</p>
-          </div>
         </div>
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-10">
-          <span className="text-[25rem] md:text-[40rem] font-black leading-none">
+        {/* TAS Gigante de fondo */}
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-20">
+          <span className="text-[20rem] md:text-[35rem] font-black leading-none text-white select-none">
             TAS
           </span>
         </div>
@@ -178,11 +188,16 @@ export default function LandingPage() {
   );
 }
 
-function Step({ title, desc }: { title: string; desc: string }) {
+// Subcomponente para los pasos con el diseño original
+function StepOriginal({ title, desc }: { title: string; desc: string }) {
   return (
-    <div className="border-t border-white/40 pt-4">
-      <h3 className="font-black text-xl mb-3 uppercase">{title}</h3>
-      <p className="text-sm leading-relaxed font-medium opacity-90">{desc}</p>
+    <div className="flex flex-col gap-2">
+      <h3 className="font-bold text-xl text-white uppercase tracking-tight leading-tight border-b-2 border-white/20 pb-1 mb-1">
+        {title}
+      </h3>
+      <p className="text-sm md:text-base font-medium opacity-90 leading-tight">
+        {desc}
+      </p>
     </div>
   );
 }
