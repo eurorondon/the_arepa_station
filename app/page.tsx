@@ -3,12 +3,12 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-// Configuración de animación para las secciones
+// Configuración de animación para las secciones con tipado correcto para evitar errores de 'ease'
 const fadeIn = {
   initial: { opacity: 0, y: 40 },
   whileInView: { opacity: 1, y: 0 },
   viewport: { once: true, margin: "-100px" },
-  transition: { duration: 0.8, ease: "easeOut" },
+  transition: { duration: 0.8, ease: "easeOut" as const }, // 'as const' es la clave
 };
 
 export default function LandingPage() {
@@ -28,7 +28,7 @@ export default function LandingPage() {
           transition={{ duration: 1 }}
         >
           <h2 className="text-xl tracking-[0.4em] mb-4 font-light italic">
-            GUÍA COSTOMER SERVICE
+            GUÍA CUSTOMER SERVICE
           </h2>
           <h1 className="text-[12rem] md:text-[18rem] font-black leading-none text-[#E99623] drop-shadow-2xl">
             TAS
@@ -48,7 +48,10 @@ export default function LandingPage() {
 
       {/* SECCIÓN 2: BIENVENIDA */}
       <motion.section
-        {...fadeIn}
+        initial={fadeIn.initial}
+        whileInView={fadeIn.whileInView}
+        viewport={fadeIn.viewport}
+        transition={fadeIn.transition}
         className={`${orangeTAS} py-24 px-10 md:px-24 grid md:grid-cols-2 gap-10`}
       >
         <div className="max-w-xl">
@@ -73,66 +76,43 @@ export default function LandingPage() {
         </div>
       </motion.section>
 
-      {/* SECCIÓN 3: GALERÍA DE IMÁGENES (RESTAURADA) */}
+      {/* SECCIÓN 3: GALERÍA DE IMÁGENES */}
       <section
         className={`${redTAS} py-12 px-6 md:px-12 grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6`}
       >
-        {/* Imágenes superiores redondeadas */}
-        <motion.div
-          {...fadeIn}
-          className="aspect-square rounded-[2rem] overflow-hidden shadow-xl"
-        >
-          <img
-            src="https://images.unsplash.com/photo-1623341214825-9f4f963727da?q=80&w=500"
-            alt="Arepas"
-            className="object-cover w-full h-full hover:scale-110 transition-transform duration-500"
-          />
-        </motion.div>
-        <motion.div
-          {...fadeIn}
-          transition={{ delay: 0.1 }}
-          className="aspect-square rounded-[2rem] overflow-hidden shadow-xl"
-        >
-          <img
-            src="https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=500"
-            alt="Food"
-            className="object-cover w-full h-full hover:scale-110 transition-transform duration-500"
-          />
-        </motion.div>
-        <motion.div
-          {...fadeIn}
-          transition={{ delay: 0.2 }}
-          className="aspect-square rounded-[2rem] overflow-hidden shadow-xl"
-        >
-          <img
-            src="https://images.unsplash.com/photo-1619194617062-5a61b9c6a049?q=80&w=500"
-            alt="Service"
-            className="object-cover w-full h-full hover:scale-110 transition-transform duration-500"
-          />
-        </motion.div>
-        <motion.div
-          {...fadeIn}
-          transition={{ delay: 0.3 }}
-          className="aspect-square rounded-[2rem] overflow-hidden shadow-xl"
-        >
-          <img
-            src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=500"
-            alt="Detail"
-            className="object-cover w-full h-full hover:scale-110 transition-transform duration-500"
-          />
-        </motion.div>
+        {[
+          "https://images.unsplash.com/photo-1623341214825-9f4f963727da?q=80&w=500",
+          "https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=500",
+          "https://images.unsplash.com/photo-1619194617062-5a61b9c6a049?q=80&w=500",
+          "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=500",
+        ].map((src, i) => (
+          <motion.div
+            key={i}
+            initial={fadeIn.initial}
+            whileInView={fadeIn.whileInView}
+            viewport={fadeIn.viewport}
+            transition={{ ...fadeIn.transition, delay: i * 0.1 }}
+            className="aspect-square rounded-[2rem] overflow-hidden shadow-xl"
+          >
+            <img
+              src={src}
+              alt="Gallery"
+              className="object-cover w-full h-full hover:scale-110 transition-transform duration-500"
+            />
+          </motion.div>
+        ))}
 
-        {/* Logos/Gráficos inferiores (RESTAURADOS) */}
+        {/* Logos/Gráficos inferiores */}
         <motion.div
           {...fadeIn}
-          transition={{ delay: 0.4 }}
+          transition={{ ...fadeIn.transition, delay: 0.4 }}
           className={`${orangeTAS} aspect-square rounded-[2.5rem] flex items-center justify-center font-black text-8xl shadow-lg border border-white/10`}
         >
           S
         </motion.div>
         <motion.div
           {...fadeIn}
-          transition={{ delay: 0.5 }}
+          transition={{ ...fadeIn.transition, delay: 0.5 }}
           className="bg-white text-[#E99623] aspect-square rounded-[2.5rem] flex flex-col items-center justify-center p-4 shadow-lg"
         >
           <span className="text-[10px] md:text-xs font-bold border-b border-[#E99623] mb-1">
@@ -144,7 +124,7 @@ export default function LandingPage() {
         </motion.div>
         <motion.div
           {...fadeIn}
-          transition={{ delay: 0.6 }}
+          transition={{ ...fadeIn.transition, delay: 0.6 }}
           className="bg-white text-[#C21E3A] aspect-square rounded-[2.5rem] flex flex-col items-center justify-center p-4 shadow-lg"
         >
           <span className="text-[10px] md:text-xs font-bold border-b border-[#C21E3A] mb-1">
@@ -156,7 +136,7 @@ export default function LandingPage() {
         </motion.div>
         <motion.div
           {...fadeIn}
-          transition={{ delay: 0.7 }}
+          transition={{ ...fadeIn.transition, delay: 0.7 }}
           className={`${orangeTAS} aspect-square rounded-[2.5rem] flex items-center justify-center font-black text-6xl shadow-lg uppercase`}
         >
           TAS
@@ -225,7 +205,7 @@ export default function LandingPage() {
           </motion.div>
           <motion.div
             {...fadeIn}
-            transition={{ delay: 0.2 }}
+            transition={{ ...fadeIn.transition, delay: 0.2 }}
             className={`${orangeTAS} p-12 rounded-[2.5rem] shadow-xl flex flex-col justify-center`}
           >
             <h3 className="font-black text-4xl mb-4 uppercase">Seguir</h3>
@@ -258,7 +238,7 @@ function StepOriginal({
       initial={{ opacity: 0, x: 20 }}
       whileInView={{ opacity: 1, x: 0 }}
       viewport={{ once: true }}
-      transition={{ delay, duration: 0.6 }}
+      transition={{ delay, duration: 0.6, ease: "easeOut" as const }}
       className="flex flex-col gap-2"
     >
       <h3 className="font-bold text-xl text-white uppercase tracking-tight leading-tight border-b-2 border-white/20 pb-1 mb-1">
