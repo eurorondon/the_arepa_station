@@ -2,14 +2,51 @@
 
 import React from "react";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
-// Configuración de animación con tipado 'any' para evitar errores de build en Vercel
+// Configuración de animación
 const fadeIn: any = {
   initial: { opacity: 0, y: 40 },
   whileInView: { opacity: 1, y: 0 },
   viewport: { once: true, margin: "-100px" },
   transition: { duration: 0.8, ease: "easeOut" },
 };
+
+// Datos del Grid para facilitar el mantenimiento
+const GRID_ITEMS = [
+  {
+    id: 1,
+    type: "image",
+    src: "https://images.unsplash.com/photo-1623341214825-9f4f963727da?q=80&w=500",
+    alt: "Greetings",
+    href: "/menu/greetings",
+    delay: 0,
+  },
+  {
+    id: 2,
+    type: "image",
+    src: "https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=500",
+    alt: "Food",
+    href: "/menu/offeringMenu",
+    delay: 0.1,
+  },
+  {
+    id: 3,
+    type: "image",
+    src: "https://images.unsplash.com/photo-1619194617062-5a61b9c6a049?q=80&w=500",
+    alt: "Service",
+    href: "/menu/explaining",
+    delay: 0.2,
+  },
+  {
+    id: 4,
+    type: "image",
+    src: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=500",
+    alt: "Detail",
+    href: "/menu/comfirming",
+    delay: 0.3,
+  },
+];
 
 export default function LandingPage() {
   const redTAS = "bg-[#C21E3A]";
@@ -19,7 +56,7 @@ export default function LandingPage() {
 
   return (
     <main className="min-h-screen font-sans text-white overflow-x-hidden bg-white">
-      {/* SECCIÓN 1: HERO (Ajustado para que no choque en móviles) */}
+      {/* SECCIÓN 1: HERO */}
       <section
         className={`${redTAS} h-screen flex flex-col items-center justify-center text-center px-4 md:px-6 relative overflow-hidden`}
       >
@@ -32,7 +69,6 @@ export default function LandingPage() {
           <h2 className="text-lg md:text-xl tracking-[0.4em] mb-4 font-light italic uppercase">
             Guía Customer Service
           </h2>
-          {/* Ajustado: text-[8rem] en móvil para que tenga padding lateral */}
           <h1
             className={`text-[10rem] md:text-[18rem] font-black leading-none ${textOrangeTAS} drop-shadow-2xl select-none break-words px-2`}
           >
@@ -78,94 +114,78 @@ export default function LandingPage() {
         </div>
       </motion.section>
 
-      {/* SECCIÓN 3: GALERÍA DE IMÁGENES (Redondeada y Dinámica) */}
+      {/* SECCIÓN 3: GALERÍA DE IMÁGENES DINÁMICA CON LINKS */}
       <section
+        id="menu-grid"
         className={`${redTAS} py-12 px-6 md:px-12 grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6`}
       >
-        {/* Imágenes superiores */}
-        <motion.div
-          {...fadeIn}
-          className="aspect-square rounded-[2rem] overflow-hidden shadow-xl"
-        >
-          <img
-            src="https://images.unsplash.com/photo-1623341214825-9f4f963727da?q=80&w=500"
-            alt="Arepas"
-            className="object-cover w-full h-full hover:scale-110 transition-transform duration-500"
-          />
-        </motion.div>
-        <motion.div
-          {...fadeIn}
-          transition={{ delay: 0.1 }}
-          className="aspect-square rounded-[2rem] overflow-hidden shadow-xl"
-        >
-          <img
-            src="https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=500"
-            alt="Food"
-            className="object-cover w-full h-full hover:scale-110 transition-transform duration-500"
-          />
-        </motion.div>
-        <motion.div
-          {...fadeIn}
-          transition={{ delay: 0.2 }}
-          className="aspect-square rounded-[2rem] overflow-hidden shadow-xl"
-        >
-          <img
-            src="https://images.unsplash.com/photo-1619194617062-5a61b9c6a049?q=80&w=500"
-            alt="Service"
-            className="object-cover w-full h-full hover:scale-110 transition-transform duration-500"
-          />
-        </motion.div>
-        <motion.div
-          {...fadeIn}
-          transition={{ delay: 0.3 }}
-          className="aspect-square rounded-[2rem] overflow-hidden shadow-xl"
-        >
-          <img
-            src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=500"
-            alt="Detail"
-            className="object-cover w-full h-full hover:scale-110 transition-transform duration-500"
-          />
-        </motion.div>
+        {/* Mapeo de imágenes con Link */}
+        {GRID_ITEMS.map((item) => (
+          <Link key={item.id} href={item.href} className="group cursor-pointer">
+            <motion.div
+              {...fadeIn}
+              transition={{ delay: item.delay }}
+              className="aspect-square rounded-[2rem] overflow-hidden shadow-xl"
+            >
+              <img
+                src={item.src}
+                alt={item.alt}
+                className="object-cover w-full h-full group-hover:scale-110 transition-transform duration-500"
+              />
+            </motion.div>
+          </Link>
+        ))}
 
-        {/* Logos/Gráficos inferiores */}
-        <motion.div
-          {...fadeIn}
-          transition={{ delay: 0.4 }}
-          className={`${orangeTAS} aspect-square rounded-[2.5rem] flex items-center justify-center font-black text-7xl md:text-8xl shadow-lg border border-white/10`}
-        >
-          S
-        </motion.div>
-        <motion.div
-          {...fadeIn}
-          transition={{ delay: 0.5 }}
-          className="bg-white text-[#E99623] aspect-square rounded-[2.5rem] flex flex-col items-center justify-center p-4 shadow-lg"
-        >
-          <span className="text-[10px] md:text-xs font-bold border-b border-[#E99623] mb-1">
-            THE AREPA
-          </span>
-          <span className="text-xl md:text-3xl font-black text-center leading-none">
-            STATION
-          </span>
-        </motion.div>
-        <motion.div
-          {...fadeIn}
-          transition={{ delay: 0.6 }}
-          className="bg-white text-[#C21E3A] aspect-square rounded-[2.5rem] flex flex-col items-center justify-center p-4 shadow-lg"
-        >
-          <span className="text-[10px] md:text-xs font-bold border-b border-[#C21E3A] mb-1">
-            THE AREPA
-          </span>
-          <span className="text-xl md:text-3xl font-black text-center leading-none">
-            STATION
-          </span>
-        </motion.div>
-        <motion.div
-          {...fadeIn}
-          transition={{ delay: 0.7 }}
-          className={`${orangeTAS} aspect-square rounded-[2.5rem] flex items-center justify-center font-black text-5xl md:text-6xl shadow-lg uppercase`}
-        >
-          TAS
-        </motion.div>
+        {/* Logos/Gráficos inferiores (También con Links de ejemplo) */}
+        <Link href="/menu/charge" className="cursor-pointer group">
+          <motion.div
+            {...fadeIn}
+            transition={{ delay: 0.4 }}
+            className={`${orangeTAS} aspect-square rounded-[2.5rem] flex items-center justify-center font-black text-7xl md:text-8xl shadow-lg border border-white/10 group-hover:brightness-110 transition-all`}
+          >
+            S
+          </motion.div>
+        </Link>
+
+        <Link href="/menu/thank" className="cursor-pointer group">
+          <motion.div
+            {...fadeIn}
+            transition={{ delay: 0.5 }}
+            className="bg-white text-[#E99623] aspect-square rounded-[2.5rem] flex flex-col items-center justify-center p-4 shadow-lg group-hover:shadow-2xl transition-all"
+          >
+            <span className="text-[10px] md:text-xs font-bold border-b border-[#E99623] mb-1">
+              THE AREPA
+            </span>
+            <span className="text-xl md:text-3xl font-black text-center leading-none">
+              STATION
+            </span>
+          </motion.div>
+        </Link>
+
+        <Link href="/menu/dismiss" className="cursor-pointer group">
+          <motion.div
+            {...fadeIn}
+            transition={{ delay: 0.6 }}
+            className="bg-white text-[#C21E3A] aspect-square rounded-[2.5rem] flex flex-col items-center justify-center p-4 shadow-lg group-hover:shadow-2xl transition-all"
+          >
+            <span className="text-[10px] md:text-xs font-bold border-b border-[#C21E3A] mb-1">
+              THE AREPA
+            </span>
+            <span className="text-xl md:text-3xl font-black text-center leading-none">
+              STATION
+            </span>
+          </motion.div>
+        </Link>
+
+        <Link href="/menu/phone-call" className="cursor-pointer group">
+          <motion.div
+            {...fadeIn}
+            transition={{ delay: 0.7 }}
+            className={`${orangeTAS} aspect-square rounded-[2.5rem] flex items-center justify-center font-black text-5xl md:text-6xl shadow-lg uppercase group-hover:brightness-110 transition-all`}
+          >
+            TAS
+          </motion.div>
+        </Link>
       </section>
 
       {/* SECCIÓN 4: LO QUE HAGO */}
@@ -183,32 +203,32 @@ export default function LandingPage() {
         <div className="md:col-span-2 grid md:grid-cols-2 gap-x-12 gap-y-12">
           <StepOriginal
             title="Greeting the customer"
-            desc="Mis cartas captan la atención con gráficas alineadas, trato con garra y elementos visuales actuales."
+            desc="Mis cartas captan la atención con gráficas alineadas..."
             delay={0.1}
           />
           <StepOriginal
             title="Responding to customers"
-            desc="¡Haz que vivan! Creo espectáculos visuales de colores e imágenes más grandes que la vida."
+            desc="¡Haz que vivan! Creo espectáculos visuales de colores..."
             delay={0.2}
           />
           <StepOriginal
             title="Offering the menu"
-            desc="Mis mensajes contienen los espacios en blanco necesarios visuales que hablan por sí solos."
+            desc="Mis mensajes contienen los espacios en blanco necesarios..."
             delay={0.3}
           />
           <StepOriginal
             title="Explaining the arepas"
-            desc="El medio es el mensaje. Gestionamos cada pedido con precisión y claridad visual."
+            desc="El medio es el mensaje. Gestionamos cada pedido..."
             delay={0.4}
           />
           <StepOriginal
             title="Confirming the order"
-            desc="Mis cartas captan la atención con gráficas alineadas, trato con garra y elementos visuales actuales."
+            desc="Mis cartas captan la atención con gráficas alineadas..."
             delay={0.5}
           />
           <StepOriginal
             title="Saying goodbye properly"
-            desc="Mis carteles captan la atención con gráficos alineados, trato con garra y elementos visuales actuales."
+            desc="Mis carteles captan la atención con gráficos alineados..."
             delay={0.6}
           />
         </div>
