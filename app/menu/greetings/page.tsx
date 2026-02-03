@@ -99,7 +99,7 @@ export default function SaludosBasicos() {
 
       {/* BOTÓN PARA REGRESAR AL GRID */}
       <div className="mt-16 flex justify-center pb-10">
-        <Link href="/">
+        <Link href="/#menu-grid">
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
