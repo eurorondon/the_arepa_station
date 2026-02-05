@@ -17,7 +17,7 @@ const GRID_ITEMS = [
   {
     id: 1,
     type: "image",
-    src: "/images/IMG_9994.png",
+    src: "/images/1.png",
     alt: "Greetings",
     href: "/menu/greetings",
     delay: 0,
@@ -25,7 +25,7 @@ const GRID_ITEMS = [
   {
     id: 2,
     type: "image",
-    src: "/images/arepa.png",
+    src: "/images/2.png",
     alt: "Food",
     href: "/menu/offeringMenu",
     delay: 0.1,
@@ -33,7 +33,7 @@ const GRID_ITEMS = [
   {
     id: 3,
     type: "image",
-    src: "/images/IMG_0016.png",
+    src: "/images/3.png",
     alt: "Service",
     href: "/menu/explaining",
     delay: 0.2,
@@ -41,7 +41,7 @@ const GRID_ITEMS = [
   {
     id: 4,
     type: "image",
-    src: "/images/IMG_0017.png",
+    src: "/images/4.png",
     alt: "Detail",
     href: "/menu/comfirming",
     delay: 0.3,
@@ -49,7 +49,7 @@ const GRID_ITEMS = [
   {
     id: 5,
     type: "image",
-    src: "/images/IMG_0014.png",
+    src: "/images/5.png",
     alt: "Detail",
     href: "/menu/charge",
     delay: 0.3,
@@ -57,7 +57,7 @@ const GRID_ITEMS = [
   {
     id: 6,
     type: "image",
-    src: "/images/IMG_0018.png",
+    src: "/images/6.png",
     alt: "Detail",
     href: "/menu/thank",
     delay: 0.3,
@@ -65,7 +65,7 @@ const GRID_ITEMS = [
   {
     id: 7,
     type: "image",
-    src: "/images/IMG_9999.png",
+    src: "/images/7.png",
     alt: "Detail",
     href: "/menu/dismiss",
     delay: 0.3,
@@ -73,7 +73,7 @@ const GRID_ITEMS = [
   {
     id: 8,
     type: "image",
-    src: "/images/IMG_0015.png",
+    src: "/images/8.png",
     alt: "Detail",
     href: "/menu/phone-call",
     delay: 0.3,
