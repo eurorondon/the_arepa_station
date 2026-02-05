@@ -17,7 +17,7 @@ const GRID_ITEMS = [
   {
     id: 1,
     type: "image",
-    src: "https://images.unsplash.com/photo-1623341214825-9f4f963727da?q=80&w=500",
+    src: "/images/IMG_9994.png",
     alt: "Greetings",
     href: "/menu/greetings",
     delay: 0,
@@ -25,7 +25,7 @@ const GRID_ITEMS = [
   {
     id: 2,
     type: "image",
-    src: "https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=500",
+    src: "/images/arepa.png",
     alt: "Food",
     href: "/menu/offeringMenu",
     delay: 0.1,
@@ -33,7 +33,7 @@ const GRID_ITEMS = [
   {
     id: 3,
     type: "image",
-    src: "https://images.unsplash.com/photo-1619194617062-5a61b9c6a049?q=80&w=500",
+    src: "/images/IMG_0016.png",
     alt: "Service",
     href: "/menu/explaining",
     delay: 0.2,
@@ -41,9 +41,41 @@ const GRID_ITEMS = [
   {
     id: 4,
     type: "image",
-    src: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=500",
+    src: "/images/IMG_0017.png",
     alt: "Detail",
     href: "/menu/comfirming",
+    delay: 0.3,
+  },
+  {
+    id: 5,
+    type: "image",
+    src: "/images/IMG_0014.png",
+    alt: "Detail",
+    href: "/menu/charge",
+    delay: 0.3,
+  },
+  {
+    id: 6,
+    type: "image",
+    src: "/images/IMG_0018.png",
+    alt: "Detail",
+    href: "/menu/thank",
+    delay: 0.3,
+  },
+  {
+    id: 7,
+    type: "image",
+    src: "/images/IMG_9999.png",
+    alt: "Detail",
+    href: "/menu/dismiss",
+    delay: 0.3,
+  },
+  {
+    id: 8,
+    type: "image",
+    src: "/images/IMG_0015.png",
+    alt: "Detail",
+    href: "/menu/phone-call",
     delay: 0.3,
   },
 ];
@@ -135,57 +167,6 @@ export default function LandingPage() {
             </motion.div>
           </Link>
         ))}
-
-        {/* Logos/Gráficos inferiores (También con Links de ejemplo) */}
-        <Link href="/menu/charge" className="cursor-pointer group">
-          <motion.div
-            {...fadeIn}
-            transition={{ delay: 0.4 }}
-            className={`${orangeTAS} aspect-square rounded-[2.5rem] flex items-center justify-center font-black text-7xl md:text-8xl shadow-lg border border-white/10 group-hover:brightness-110 transition-all`}
-          >
-            S
-          </motion.div>
-        </Link>
-
-        <Link href="/menu/thank" className="cursor-pointer group">
-          <motion.div
-            {...fadeIn}
-            transition={{ delay: 0.5 }}
-            className="bg-white text-[#E99623] aspect-square rounded-[2.5rem] flex flex-col items-center justify-center p-4 shadow-lg group-hover:shadow-2xl transition-all"
-          >
-            <span className="text-[10px] md:text-xs font-bold border-b border-[#E99623] mb-1">
-              THE AREPA
-            </span>
-            <span className="text-xl md:text-3xl font-black text-center leading-none">
-              STATION
-            </span>
-          </motion.div>
-        </Link>
-
-        <Link href="/menu/dismiss" className="cursor-pointer group">
-          <motion.div
-            {...fadeIn}
-            transition={{ delay: 0.6 }}
-            className="bg-white text-[#C21E3A] aspect-square rounded-[2.5rem] flex flex-col items-center justify-center p-4 shadow-lg group-hover:shadow-2xl transition-all"
-          >
-            <span className="text-[10px] md:text-xs font-bold border-b border-[#C21E3A] mb-1">
-              THE AREPA
-            </span>
-            <span className="text-xl md:text-3xl font-black text-center leading-none">
-              STATION
-            </span>
-          </motion.div>
-        </Link>
-
-        <Link href="/menu/phone-call" className="cursor-pointer group">
-          <motion.div
-            {...fadeIn}
-            transition={{ delay: 0.7 }}
-            className={`${orangeTAS} aspect-square rounded-[2.5rem] flex items-center justify-center font-black text-5xl md:text-6xl shadow-lg uppercase group-hover:brightness-110 transition-all`}
-          >
-            TAS
-          </motion.div>
-        </Link>
       </section>
 
       {/* SECCIÓN 4: LO QUE HAGO */}
